@@ -129,10 +129,12 @@ class CompatibilityGAE(Model):
     def _build(self):
         input_dim = self.input_dim
         act_funct = tf.nn.relu
+        
         # stack of GCN layers as the encoder
+        # > self.hidden : [350, 350, 350] 
         for l in range(len(self.hidden)):
             self.layers.append(GCN(input_dim=input_dim,
-                                     output_dim=self.hidden[l],
+                                     output_dim=self.hidden[l], # [350, 350, 350] 이므로 input_dim==output_dim 같다.(논문 참조)
                                      support=self.support,
                                      num_support=self.num_support,
                                      act=act_funct,
