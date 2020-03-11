@@ -35,9 +35,11 @@ class DataLoaderPolyvore(Dataloader):
         with open(questions_file_resampled) as f:
             self.questions_resampled = json.load(f)
 
+             
+    # phase = ['train', 'valid', 'test']              
     def get_phase(self, phase):
         print('get phase: {}'.format(phase))
-        assert phase in ['train', 'valid', 'test']
+        assert phase in ['train', 'valid', 'test'] 
 
         lower_adj = getattr(self, 'lower_{}_adj'.format(phase))
 
